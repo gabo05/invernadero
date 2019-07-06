@@ -14,12 +14,27 @@ public class Orden60 extends Orden{
     
     public void readLine(String[] line){
         this.setTiempo(line[1]);
+
+        String val = "";
+
         String[] sc = line[3].split(" ");
-        this.setCarro(sc.length > 1 ? sc[1] : "");
+        if(sc.length > 1){
+            String[] vals = sc[1].split(".");
+            val = sc[1].replaceAll("[\\D]", "");
+            this.setCarro(val);
+        }
         sc = line[4].split(" ");
-        this.setFardos(sc.length > 1 ? sc[1] : "");
+        if(sc.length > 1){
+            String[] vals = sc[1].split(".");
+            val = sc[1].replaceAll("[\\D]", "");
+            this.setFardos(val);
+        }
         sc = line[5].split("\\s|\\[");
-        this.sedtBloque(sc.length > 1 ? sc[1] : "");
+        if(sc.length > 1){
+            String[] vals = sc[1].split(".");
+            val = sc[1].replaceAll("[\\D]", "");
+            this.sedtBloque(val);
+        }
     }
     public String toString() {
         return this.tiempo+"|"+this.carro+"|"+this.fardos+"|"+this.bloque;
